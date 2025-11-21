@@ -1,0 +1,345 @@
+/* Remettre à zéro les marges de tous éléments pour contrecarrer les valeurs par défaut prédéfinies du fureteur */
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    background-color: black;
+}
+
+/* Classe pour la mise en page utilisant les "flexbox" */
+.page {
+    /* disposition verticale des sections header, main et footer */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* 100% de la hauteur du viewport pour assurer la réactivité verticale */
+    gap: var(--gap);
+    padding: var(--gap);
+    background-color: black;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:"wdth" 100;
+
+
+    .favicon {
+        height: 32px;
+        width: 32px;
+    }
+
+    .header,
+    .footer {
+        font-size: 1.5em;
+        font-weight: bolder;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        background-color: black;
+        color: #08CB00;
+
+        .menu {
+            /* disposition horizontale des items de menu */
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: left;
+
+        }
+
+        .menuItem {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 12px;
+            border-radius: 6px;
+            background: #08CB00;
+            /* vert principal */
+            color: #ffffff;
+            /* texte blanc */
+            text-decoration: none;
+            border: 1px solid #08CB00;
+            /* bordure verte foncée */
+            cursor: pointer;
+            transition: background .15s ease, transform .08s ease, box-shadow .15s;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .menuItem:hover {
+            background: #08CB00;
+            /* vert au survol */
+            transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(31, 90, 57, 0.12);
+        }
+
+        .selectedMenuItem {
+            background: #253900;
+            /* état sélectionné */
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(36, 91, 63, 0.18);
+        }
+    }
+
+    .main {
+        flex: 1;
+        /* permettre de le formatage flex du parent */
+        min-height: 10vh;
+        /* hauteur minimum relative à la hauteur du viewport*/
+
+        /* contrecarrer les styles de la classe page */
+        border: none;
+        padding: 0px;
+        background: white;
+
+        /* Alignement horizontal des éléments enfants */
+        display: flex;
+        flex-direction: row;
+        gap: var(--gap);
+
+
+        background-color: black;
+        color: #08CB00;
+
+        .scrollSection {
+            overflow-y: auto;
+            background-color: black;
+
+        }
+
+        .content {
+            flex-grow: 1;
+            background-color: black;
+
+            .bigImage {
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                aspect-ratio: 16/9;
+            }
+        }
+
+        .justifiedText {
+            text-align: justify;
+            margin-top: var(--gap);
+        }
+
+        .ellipsis {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            background-color: black;
+        }
+
+
+        .left_Aside {
+            flex: 1;
+            min-width: 100px;
+            max-width: 120px;
+        }
+
+        .right_Aside {
+            flex: 1;
+            min-width: 70px;
+            max-width: 120px;
+        }
+
+        .right_Aside_big {
+            flex: 1;
+            min-width: 33%;
+            max-width: 80%;
+        }
+
+    }
+
+    .main>* {
+        background: white;
+        padding: var(--gap);
+        border: 1px solid #253900;
+    }
+}
+
+.page>* {
+    /* cibler tout les enfants enfant de l'éléments de classe page */
+    background: black;
+    padding: var(--gap);
+    border: 1px solid #253900;
+}
+
+
+/* disposer une liste d'icone font-awsome vertivalement */
+.iconList {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: var(--gap);
+}
+
+/* style pour formater les icones de classe font-awsome */
+.fa-icon {
+    flex: 1;
+    font-size: 2em;
+    color: dodgerblue;
+    cursor: pointer;
+}
+
+/* Changer la couleur de l'élément survolé de classe fa-icon */
+.fa-icon:hover {
+    color: blue;
+}
+
+/* Scrollbar vert néon */
+:root {
+    --neon: #39ff14;
+    --neon-glow: rgba(57, 255, 20, 0.20);
+    --scroll-bg: #06100a;
+}
+
+@media (min-width:500px) {
+
+    /* WebKit / Blink */
+    ::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: linear-gradient(180deg, var(--scroll-bg), rgba(6, 16, 10, 0.6));
+        border-radius: 12px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, var(--neon), #00e600);
+        border-radius: 12px;
+        box-shadow: 0 0 10px var(--neon-glow), inset 0 0 6px rgba(255, 255, 255, 0.06);
+        border: 3px solid transparent;
+        background-clip: padding-box;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        box-shadow: 0 0 18px rgba(57, 255, 20, 0.35);
+        transform: translateY(-1px);
+    }
+
+    /* Firefox */
+    html {
+        scrollbar-width: thin;
+        scrollbar-color: var(--neon) var(--scroll-bg);
+    }
+}
+
+@media (min-width:500px) {
+
+    /*** classes pour l'apparence de la barre de défilement ***/
+    ::-webkit-scrollbar {
+        border-radius: var(--border-radius);
+        width: var(--scroolbar-with);
+    }
+
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        border-radius: var(--border-radius);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: var(--border-radius);
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    }
+
+    .momo-trust-display-regular {
+        font-family: "Momo Trust Display", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 1.8em;
+    }
+}
+
+.author {
+    width: 30%;
+    min-width: 300px;
+    margin: auto;
+    margin-top: 50px;
+    font-size: 1.5em;
+
+    ul {
+        list-style-type: none;
+    }
+}
+
+/* Bannière en haut du contenu */
+.banner {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #253900;
+    /* ajuste selon thème */
+    background: #000;
+    /* fallback */
+}
+
+.bannerImage {
+    display: block;
+    width: 100%;
+    height: 100px;
+    /* adapte la hauteur souhaitée */
+    object-fit: cover;
+    /* recadre proprement l'image */
+}
+
+/* Responsive : hauteur réduite sur petits écrans */
+@media (max-width: 800px) {
+    .bannerImage {
+        height: 140px;
+    }
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #253900;
+    /* ajuste selon thème */
+}
+
+.image3 {
+    width: 25%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #253900;
+    /* ajuste selon thème */
+}
+
+
+.orbitron {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.image-circulaire {
+    /* 1a. Définir une taille fixe pour l'image */
+    width: 200px;
+    height: 200px;
+    
+    /* 1b. Créer le cercle parfait */
+    /* Un border-radius de 50% transforme un carré en cercle */
+    border-radius: 50%;
+    
+    /* 1c. S'assurer que l'image remplit le cercle sans déformation */
+    /* cover : l'image remplit la zone, coupant les bords si nécessaire */
+    object-fit: cover; 
+    
+    /* Optionnel : Une bordure autour du cercle */
+    border: 5px solid #28a745; 
+}
+.centre-image-container {
+    min-height: 100vh; 
+    display: flex;
+    justify-content: center;
+}
+.boxText {
+    color: white;
+    background-color: transparent;
+    margin: 2%;
+}
